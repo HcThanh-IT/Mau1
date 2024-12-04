@@ -74,6 +74,9 @@
     <link rel="preconnect" href="https://api.sales.ldpform.net/" crossorigin>
     <link rel="preload" href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&family=Dancing+Script:wght@400;700&family=Oswald:wght@400;700&display=swap" as="style" onload="this.onload = null; this.rel = 'stylesheet';">
     <link rel="preload" href="https://w.ladicdn.com/v4/source/ladipagev3.min.js?v=1732700988205" as="script">
+
+    <link rel="stylesheet" href="./music.css">
+
     <style id="style_ladi" type="text/css">
         a,
         abbr,
@@ -3241,9 +3244,19 @@
 
 <body class="lazyload">
     <div class="ladi-wraper">
-        <div id="SECTION1" class='ladi-section'>
+        <div id="SECTION1" class='ladi-section' style="position: relative;">
             <div class='ladi-section-background'></div>
             <div class="ladi-container">
+                
+                <div class="music-player">
+                    <!-- Đĩa nhạc kết hợp nút -->
+                    <div class="music-disc" id="music-disc">
+                        <div class="play-icon paused" id="play-icon"></div>
+                    </div>
+                    <!-- Thẻ audio -->
+                    <audio id="background-music" src="./music.mp3"></audio>
+                </div>
+
                 <div id="HEADLINE3" class='ladi-element'>
                     <h3 class='ladi-headline ladi-transition'>Văn Hùng - Thuý Hằng</h3>
                 </div>
@@ -3598,6 +3611,34 @@
     <div id="backdrop-popup" class="backdrop-popup"></div>
     <div id="backdrop-dropbox" class="backdrop-dropbox"></div>
     <div id="lightbox-screen" class="lightbox-screen"></div>
+    <script>
+        const disc = document.getElementById('music-disc');
+        const playIcon = document.getElementById('play-icon');
+        const audio = document.getElementById('background-music');
+
+        // Biến trạng thái phát nhạc
+        let isPlaying = false;
+
+        // Sự kiện nhấn vào đĩa
+        disc.addEventListener('click', () => {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    disc.style.animation = 'spin 5s linear infinite'; // Bắt đầu xoay
+                    playIcon.classList.remove('paused');
+                    playIcon.classList.add('playing');
+                    isPlaying = true;
+                }).catch(error => {
+                    console.log('Lỗi phát nhạc:', error);
+                });
+            } else {
+                audio.pause();
+                disc.style.animation = ''; // Dừng xoay
+                playIcon.classList.remove('playing');
+                playIcon.classList.add('paused');
+                isPlaying = false;
+            }
+        });
+    </script>
     <script id="script_lazyload" type="text/javascript">
         window.lazyload_run = function(dom, is_first, check_dom_rect) {
             if (check_dom_rect && (document.body.clientWidth <= 0 || document.body.clientheight <= 0)) {
@@ -4500,12 +4541,7 @@
             run();
         })();
     </script>
-    <audio id="my-audio" src="./music.mp3"></audio>
-
-    <script>
-        const audio = document.getElementById('my-audio');
-        audio.play(); // Tự động phát nhạc
-    </script>
+    
 
 </body>
 
