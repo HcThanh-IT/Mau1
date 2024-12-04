@@ -1,0 +1,73 @@
+/* Phần chứa đĩa và nút */
+.music-player {
+    position: fixed;
+    /* Giữ vị trí cố định */
+    bottom: 20px;
+    /* Cách đáy 20px */
+    right: 20px;
+    /* Cách phải 20px */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+    /* Hiển thị trên các phần tử khác */
+}
+
+/* Đĩa nhạc kết hợp nút */
+.music-disc {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    border: 10px solid #fff;
+    border-radius: 50%;
+    background-image: url('path_to_disc_image.jpg');
+    /* Thay bằng ảnh đĩa nhạc */
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    animation: spin 0s linear infinite;
+    /* Dừng khi không phát nhạc */
+    transition: transform 0.3s ease;
+}
+
+/* Nút phát bên trong đĩa */
+.play-icon {
+    position: absolute;
+    width: 50px;
+    /* Tăng kích thước nút */
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.play-icon.paused::before {
+    content: "▶";
+    /* Icon phát */
+}
+
+.play-icon.playing::before {
+    content: "❚❚";
+    /* Icon tạm dừng */
+}
+
+/* Hiệu ứng xoay */
+@keyframes spin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
