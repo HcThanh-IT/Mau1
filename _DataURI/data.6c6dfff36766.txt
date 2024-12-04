@@ -1,0 +1,1 @@
+chrome-extension://pbhpcbdjngblklnibanbkgkogjmbjeoe/src/public/images/128px.png
