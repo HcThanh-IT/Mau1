@@ -2,9 +2,9 @@
 .music-player {
     position: fixed;
     /* Giữ vị trí cố định */
-    bottom: 20px;
+    bottom: 10px;
     /* Cách đáy 20px */
-    right: 20px;
+    right: 10px;
     /* Cách phải 20px */
     display: flex;
     flex-direction: column;
@@ -17,9 +17,9 @@
 /* Đĩa nhạc kết hợp nút */
 .music-disc {
     position: relative;
-    width: 200px;
-    height: 200px;
-    border: 10px solid #fff;
+    width: 50px;
+    height: 50px;
+    border: 5px solid #000000;
     border-radius: 50%;
     background-image: url('path_to_disc_image.jpg');
     /* Thay bằng ảnh đĩa nhạc */
